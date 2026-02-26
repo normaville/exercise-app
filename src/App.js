@@ -33,11 +33,6 @@ function App() {
         ))}
       </div>
 
-      <div className="pagination-dots">
-        <span className="dot active"></span>
-        <span className="dot"></span>
-        <span className="dot"></span>
-      </div>
     </div>
   );
 }
