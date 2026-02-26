@@ -1,38 +1,236 @@
-.App {
+/* Modern Font and Reset */
+@import url('https://fonts.googleapis.com');
+
+* {
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  margin: 0;
+  background-color: #f2f2f7; /* Light gray background */
+  display: flex;
+  justify-content: center;
+}
+
+/* Mobile Viewport Container */
+.app-viewport {
+  width: 100vw;
+  max-width: 400px;
+  height: 100vh;
+  background: white;
+  padding: 40px 24px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Home Screen Styles */
+.main-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 40px;
+  color: #1c1c1e;
+}
+
+.card-container {
+  flex-grow: 1;
+}
+
+.exercise-card {
+  background: #f2f2f7;
+  padding: 24px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.exercise-card:active {
+  transform: scale(0.97); /* Shrink effect when tapped */
+}
+
+.card-text {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.play-circle {
+  width: 36px;
+  height: 36px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+/* Repetition Page Styles */
+.exercise-view {
+  align-items: center;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.view-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 60px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.counter-display {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.count-num {
+  font-size: 6rem;
+  font-weight: 800;
+  min-width: 100px;
+}
+
+.ctrl-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1.5px solid #d1d1d6;
+  background: transparent;
+  font-size: 1.5rem;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  cursor: pointer;
+}
+
+/* Bottom Action Buttons */
+.action-row {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+}
+
+.primary-btn, .secondary-btn {
+  flex: 1;
+  padding: 16px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+}
+
+.primary-btn {
+  background: #e5e5ea;
+  color: #1c1c1e;
+}
+
+.secondary-btn {
+  background: #e5e5ea;
+  color: #1c1c1e;
+}
+
+/* Fixed Back Navigation Arrow */
+.nav-back-btn {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #e5e5ea;
+  border: none;
+  padding: 12px 40px;
+  border-radius: 100px;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* Pagination Dots */
+.pagination-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background: #e5e5ea;
+  border-radius: 50%;
+}
+
+.dot.active {
+  background: #aeaeb2;
+}
+
+/* Duration-Specific Layout */
+.duration-view {
+  align-items: center;
+  text-align: center;
+}
+
+.media-box {
+  width: 220px;
+  height: 220px;
+  background: #f2f2f7; /* Matching card background */
+  border-radius: 30px;
+  margin: 0 auto 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  color: #aeaeb2;
+}
+
+.timer-section {
+  margin-bottom: 40px;
+}
+
+.status-label {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1c1c1e;
+  margin-bottom: 8px;
+}
+
+.timer-display {
+  font-size: 5rem;
+  font-weight: 800;
+  margin: 0;
+}
+
+.timer-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+
+/* Matching the circular style for timer controls */
+.icon-btn {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  border: 1.5px solid #d1d1d6;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.icon-btn.main {
+  background: #1c1c1e; /* High contrast black for main action */
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  width: 70px;
+  height: 70px;
+  border: none;
+  font-size: 1.4rem;
 }

@@ -1,41 +1,43 @@
 import React, { useState } from "react";
 import RepetitionExercise from "./components/RepetitionExercise";
 import DurationExercise from "./components/DurationExercise";
+import "./App.css";
 
 function App() {
-  // State for tracking which screen/exercise is active
   const [currentExercise, setCurrentExercise] = useState(null);
 
-  let screen;
+  const exercises = [
+    { name: "Sit Ups", type: "repetition" },
+    { name: "Outdoor Run", type: "duration" },
+    { name: "Plank", type: "duration" }
+  ];
 
+  // Logic to switch between Menu and Exercise Screen
   if (currentExercise) {
-    // SCREEN 2: The Exercise Screen
-    if (currentExercise.type === "repetition") {
-      screen = <RepetitionExercise name={currentExercise.name} />;
-    } else {
-      screen = <DurationExercise name={currentExercise.name} />;
-    }
-  } else {
-    // SCREEN 1: The Menu Screen
-    screen = (
-      <div>
-        <h1>Select an Exercise</h1>
-        <button onClick={() => setCurrentExercise({ name: "Pushups", type: "repetition" })}>
-          Pushups
-        </button>
-        <button onClick={() => setCurrentExercise({ name: "Running", type: "duration" })}>
-          Running
-        </button>
-        <button onClick={() => setCurrentExercise({ name: "Plank", type: "duration" })}>
-          Plank
-        </button>
-      </div>
-    );
+    const Component = currentExercise.type === "repetition" ? RepetitionExercise : DurationExercise;
+    return <Component name={currentExercise.name} setMenu={() => setCurrentExercise(null)} />;
   }
 
   return (
-    <div className="App">
-      {screen}
+    <div className="app-viewport">
+      <header className="header">
+        <h1 className="main-title">Welcome back, Jane</h1>
+      </header>
+      
+      <div className="card-container">
+        {exercises.map((ex) => (
+          <div key={ex.name} className="exercise-card" onClick={() => setCurrentExercise(ex)}>
+            <span className="card-text">{ex.name}</span>
+            <div className="play-circle">▶</div>
+          </div>
+        ))}
+      </div>
+
+      <div className="pagination-dots">
+        <span className="dot active"></span>
+        <span className="dot"></span>
+        <span className="dot"></span>
+      </div>
     </div>
   );
 }
