@@ -2,7 +2,7 @@
   "name": "exercise-app",
   "version": "0.1.0",
   "private": false,
-  "homepage": "https://normaville.github.io/excercise-app",
+  "homepage": "https://normaville.github.io/excercise-app/",
   "dependencies": {
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
